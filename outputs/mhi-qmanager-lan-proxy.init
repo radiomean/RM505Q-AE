@@ -1,0 +1,13 @@
+#!/bin/sh /etc/rc.common
+
+# Serves only the router LAN address, never WAN.  It connects to the
+# loopback-only mhi-adb-bridge, which in turn opens modem-local tcp:443.
+START=100
+USE_PROCD=1
+
+start_service() {
+	procd_open_instance
+	procd_set_param command /usr/sbin/mhi-qmanager-lan-proxy 192.168.8.1 8443 443
+	procd_set_param respawn 3600 5 5
+	procd_close_instance
+}

@@ -1,0 +1,19 @@
+--- a/core/mhi_init.c
++++ b/core/mhi_init.c
+@@
+ //"Qualcomm PCIe Modem"
+ 	{"DUN", MHI_CLIENT_DUN_OUT, NUM_MHI_CHAN_RING_ELEMENTS},
+ 	{"DUN", MHI_CLIENT_DUN_IN, NUM_MHI_CHAN_RING_ELEMENTS},
++//"Qualcomm PCIe ADB / Fastboot"
++	{"ADB", MHI_CLIENT_ADB_FB_OUT, NUM_MHI_CHAN_RING_ELEMENTS},
++	{"ADB", MHI_CLIENT_ADB_FB_IN, NUM_MHI_CHAN_RING_ELEMENTS},
+ //"Qualcomm EDL "
+ 	{"EDL", MHI_CLIENT_EDL_OUT, NUM_MHI_CHAN_RING_ELEMENTS},
+ 	{"EDL", MHI_CLIENT_EDL_IN, NUM_MHI_CHAN_RING_ELEMENTS},
+--- a/devices/mhi_uci.c
++++ b/devices/mhi_uci.c
+@@
+ 	{ .chan = "QMI1", .driver_data = 0x1000 },
+ 	{ .chan = "DUN", .driver_data = 0x1000 },
++	{ .chan = "ADB", .driver_data = 0x4000 },
+ #ifdef ENABLE_ADPL
